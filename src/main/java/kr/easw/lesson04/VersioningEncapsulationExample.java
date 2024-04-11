@@ -41,28 +41,28 @@ public class VersioningEncapsulationExample {
     }
 
 
-    static class TestV1 implements TestInterface {
+   static class TestV1 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            return type; 
         }
     }
 
 
-    // Split by space
     static class TestV2 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            return type.replace("!", "?"); 
         }
     }
 
 
     // Split by space, and concat
-    static class TestV3 implements TestInterface {
+   static class TestV3 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            String noExclamation = type.replace("!", "?"); // 느낌표를 물음표로 변환
+            return noExclamation.replace(" ", ""); // 공백 제거
         }
     }
 }
