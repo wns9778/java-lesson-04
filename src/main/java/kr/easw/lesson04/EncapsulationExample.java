@@ -42,7 +42,15 @@ public class EncapsulationExample {
         }
     }
 
-    private static class PerformanceManipulation extends Car {
+    public void setRealFuelEfficiency(double newFuelEfficiency) {
+            if (newFuelEfficiency > this.realFuelEfficiency) {
+                
+                throw new IllegalArgumentException("새 연비는 현재 값보다 높을 수 없습니다.");
+            }
+            this.realFuelEfficiency = newFuelEfficiency;
+        }
+    }
+   private static class PerformanceManipulation extends Car {
         {
             setRealFuelEfficiency(15.0);
         }
