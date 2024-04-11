@@ -57,22 +57,25 @@ public class ModularExample {
      * <p>
      * 상속하여 구현한 Vehicle 객체를 반환해야 합니다.
      */
-    public static Vehicle getVehicle() {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+     public static Vehicle getVehicle() {
+        return new CustomBike();
     }
 
+
     // 해당 클래스를 상속하여 구현하여야 합니다.
-    static abstract class Vehicle {
-        // Energy는 사용할 에너지를 뜻합니다.
-        // CoalEnergy, HumanEnergy, SunlightEnergy 3개가 사용 가능합니다.
-        public abstract Energy getEnergy();
+    static class CustomBike extends Vehicle {
+        @Override
+        public Energy getEnergy() {
+            return new HumanEnergy();
+        }
 
-        // VehicleType은 탈것의 타입입니다.
-        // 타입에 따라 틱당 소모 비용이 다릅니다.
-        public abstract VehicleType getType();
+        p public Energy getEnergy() {
+            return new HumanEnergy();
+        }
+        public VehicleType getType() {
+            return new Bike();
+        }
 
-        // 각 틱이 실행되기 전에 실행됩니다.
-        // 이 메서드를 통해 조금 더 나은 결과를 도출할 수 있습니다.
         public abstract void onTick(int currentTick, int fuel);
     }
 
